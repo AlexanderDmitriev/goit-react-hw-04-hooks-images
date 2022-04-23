@@ -3,7 +3,6 @@ import { Button } from '../Button';
 import { ImageGalleryItem } from './ImageGalleryItem';
 
 const ImageGallery = ({ imagesForGallery, buttonHandler, openModal }) => {
-  console.log(openModal);
 
   return (
     <>
