@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 
+//Рендер кастомной кнопки для дозагрузки картинок
 export const Button = ({ onClick }) => {
   return (
     <CustomButton type="button" onClick={onClick}>

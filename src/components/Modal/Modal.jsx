@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { ModalOverlay, ModalContent } from './Modal.styled';
 
+//Делаем портал для рендера модалки
 const modalRoot = document.querySelector('#modal');
 
 const Modal = ({ onClose, currentImageUrl, currentImageDescription }) => {
@@ -11,6 +12,7 @@ const Modal = ({ onClose, currentImageUrl, currentImageDescription }) => {
     }
   };
 
+  //Вешаем/снимаем слушатель событий при нажатии клавиши Escape
   useEffect(() => {
     window.addEventListener('keydown', handleEsc);
     return () => {

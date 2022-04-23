@@ -9,6 +9,7 @@ import {
 } from './Searchbar.styled';
 import { MdSearch } from 'react-icons/md';
 
+//При начальном рендере ключевое слово для поиска пустая строка
 const initialValues = { keyWord: '' };
 
 const Searchbar = ({ onSubmit }) => {

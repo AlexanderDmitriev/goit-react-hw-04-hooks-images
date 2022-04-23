@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { Form, Field } from 'formik';
 
+//Стили для хедера, в котором рендерится вся поисковая часть
 export const HeaderBar = styled.header`
   top: 0;
   left: 0;

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Searchbar from './SearchungBar';
 import ImageGallery from './Gallery';
-import * as API from './servicies/api';
+import * as API from '../servicies/api';
 import { Container } from './App.styled';
 import GlobalStyle from '../GlobalStyle';
 import { Spinner } from './App.styled';
 import Modal from './Modal';
+import { ToastContainer } from 'react-toastify';
 
 export class App extends Component {
   state = {
@@ -42,6 +43,7 @@ export class App extends Component {
     this.setState(({ showModal }) => ({ showModal: !showModal }));
   };
 
+  //Метод для открытия модалки
   openModal = (img) => {
       this.setState(({ showModal }) => ({
         showModal: !showModal,
@@ -49,6 +51,8 @@ export class App extends Component {
       }));
     
   };
+
+  
 
   render() {
     const {
@@ -58,6 +62,7 @@ export class App extends Component {
       currentImageUrl,
       currentImageDescription,
     } = this.state;
+
 
     return (
       <>
@@ -82,6 +87,7 @@ export class App extends Component {
             />
           )}
         </Container>
+        <ToastContainer autoClose={2000} />
       </>
     );
   }
