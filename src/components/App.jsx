@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Searchbar from './SearchungBar';
 import ImageGallery from './Gallery';
 import * as API from '../servicies/api';
@@ -8,72 +8,59 @@ import { Spinner } from './App.styled';
 import Modal from './Modal';
 import { ToastContainer } from 'react-toastify';
 
-export class App extends Component {
-  state = {
-    keyWord: '',
-    loading: false,
-    images: [],
-    page: 1,
-    showModal: false,
-    currentImageUrl: null,
-    currentImageDescription: null,
+export const App = () => {
+  const [keyWord, setKeyWord] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [images, setImages] = useState([]);
+  const [page, setPage] = useState(1);
+  const [showModal, setShowModal] = useState(false);
+  const [currentImageUrl, setCurrentImageUrl] = useState(null);
+  const [currentImageDescription, setCurrentImageDescription] = useState(null);
+
+  const handleSearch = values => {
+    setLoading(true);
+    setKeyWord(values);
+    setPage(1);
+    /* API.getImages(values, 1).then(response => {
+      setLoading(false);
+      setImages(response.data.hits);
+    }) */;
   };
 
-  handleSearch = values => {
-    this.setState({ loading: true, keyWord: values, page: 1 });
-    API.getImages(values, 1).then(response => {
-      this.setState({ loading: false, images: response.data.hits });
-    });
+  useEffect(()=>{
+    if (keyWord==='') return;
+    API.getImages(keyWord, page).then(response => {
+      setLoading(false);
+      setImages(prevImages=>[...prevImages,...response.data.hits]);
+    })
+  },[keyWord,page]);
+
+  const loadMoreHandler = () => {
+    setPage(prevPage => prevPage+1);
+
+    //this.setState({ loading: true });
   };
 
-  loadMoreHandler = () => {
-    this.setState(prevState => ({
-      page: prevState.page + 1,
-    }));
-    this.setState({ loading: true });
-    API.getImages(this.state.keyWord, this.state.page + 1).then(response =>
-      this.setState(prevState => ({
-        loading: false,
-        images: [...prevState.images, ...response.data.hits],
-      }))
-    );
-  };
-
-  toggleModal = () => {
-    this.setState(({ showModal }) => ({ showModal: !showModal }));
+  const toggleModal = () => {
+    setShowModal(!showModal);
   };
 
   //Метод для открытия модалки
-  openModal = (img) => {
-      this.setState(({ showModal }) => ({
-        showModal: !showModal,
-        currentImageUrl: img
-      }));
-    
+  const openModal = (img) => {
+    setShowModal(!showModal);
+    setCurrentImageUrl(img);
   };
-
-  
-
-  render() {
-    const {
-      images,
-      loading,
-      showModal,
-      currentImageUrl,
-      currentImageDescription,
-    } = this.state;
-
 
     return (
       <>
         <GlobalStyle />
         <Container>
-          <Searchbar onSubmit={this.handleSearch} />
+          <Searchbar onSubmit={handleSearch} />
           {images.length > 0 && (
             <ImageGallery
               imagesForGallery={images}
-              buttonHandler={this.loadMoreHandler}
-              openModal={this.openModal}
+              buttonHandler={loadMoreHandler}
+              openModal={openModal}
             />
           )}
           {loading && (
@@ -81,7 +68,7 @@ export class App extends Component {
           )}
           {showModal && (
             <Modal
-              onClose={this.toggleModal}
+              onClose={toggleModal}
               currentImageUrl={currentImageUrl}
               currentImageDescription={currentImageDescription}
             />
@@ -90,5 +77,4 @@ export class App extends Component {
         <ToastContainer autoClose={2000} />
       </>
     );
-  }
 }
