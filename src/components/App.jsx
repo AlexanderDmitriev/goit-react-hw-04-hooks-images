@@ -54,9 +54,10 @@ export const App = () => {
   };
 
   //Метод для открытия модалки
-  const openModal = (img) => {
+  const openModal = (img,description) => {
     setShowModal(!showModal);
     setCurrentImageUrl(img);
+    setCurrentImageDescription(description);
   };
 
     return (
