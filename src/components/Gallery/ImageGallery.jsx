@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 import { Button } from '../Button';
 import { ImageGalleryItem } from './ImageGalleryItem';
 
@@ -19,6 +20,11 @@ const ImageGallery = ({ imagesForGallery, buttonHandler, openModal }) => {
       <Button onClick={buttonHandler} />
     </>
   );
+};
+
+ImageGalleryItem.propTypes={
+  img:PropTypes.string,
+  imgBig:PropTypes.string,
 };
 
 const ImageGalleryList = styled.ul`

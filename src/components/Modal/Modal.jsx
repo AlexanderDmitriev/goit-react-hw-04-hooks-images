@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { ModalOverlay, ModalContent } from './Modal.styled';
 
@@ -18,7 +19,7 @@ const Modal = ({ onClose, currentImageUrl, currentImageDescription }) => {
     return () => {
       window.removeEventListener('keydown', handleEsc);
     };
-  }, []);
+  });
 
   const handleBackDrop = event => {
     if (event.target === event.currentTarget) {
@@ -34,6 +35,11 @@ const Modal = ({ onClose, currentImageUrl, currentImageDescription }) => {
     </ModalOverlay>,
     modalRoot
   );
+};
+
+ModalContent.propTypes={
+  img:PropTypes.string,
+  alt:PropTypes.string,
 };
 
 export default Modal;
