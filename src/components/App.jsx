@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Searchbar from './SearchungBar';
 import ImageGallery from './Gallery';
 import * as API from '../servicies/api';
@@ -31,8 +32,15 @@ export const App = () => {
     if (keyWord==='') return;
     API.getImages(keyWord, page).then(response => {
       setLoading(false);
+      if(response!=null){
       setImages(prevImages=>[...prevImages,...response.data.hits]);
-    })
+      }else {
+        return;
+      };
+      
+      
+    });
+    
   },[keyWord,page]);
 
   const loadMoreHandler = () => {
@@ -78,3 +86,12 @@ export const App = () => {
       </>
     );
 }
+
+ImageGallery.propTypes={
+  imagesForGallery:PropTypes.array
+};
+
+Modal.propTypes={
+  currentImageUrl:PropTypes.string,
+  currentImageDescription:PropTypes.string
+};
