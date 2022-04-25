@@ -20,16 +20,14 @@ export const App = () => {
 
   const handleSearch = values => {
     setLoading(true);
+    setImages([]);
     setKeyWord(values);
     setPage(1);
-    /* API.getImages(values, 1).then(response => {
-      setLoading(false);
-      setImages(response.data.hits);
-    }) */;
+    
   };
 
   useEffect(()=>{
-    if (keyWord==='') return;
+    if (keyWord==='') return; //Не вызываем при первом рендере
     API.getImages(keyWord, page).then(response => {
       setLoading(false);
       if(response!=null){
@@ -37,8 +35,6 @@ export const App = () => {
       }else {
         return;
       };
-      
-      
     });
     
   },[keyWord,page]);
