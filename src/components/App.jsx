@@ -23,24 +23,22 @@ export const App = () => {
     setImages([]);
     setKeyWord(values);
     setPage(1);
-    
   };
 
-  useEffect(()=>{
-    if (keyWord==='') return; //Не вызываем при первом рендере
+  useEffect(() => {
+    if (keyWord === '') return; //Не вызываем при первом рендере
     API.getImages(keyWord, page).then(response => {
       setLoading(false);
-      if(response!=null){
-      setImages(prevImages=>[...prevImages,...response.data.hits]);
-      }else {
+      if (response != null) {
+        setImages(prevImages => [...prevImages, ...response.data.hits]);
+      } else {
         return;
-      };
+      }
     });
-    
-  },[keyWord,page]);
+  }, [keyWord, page]);
 
   const loadMoreHandler = () => {
-    setPage(prevPage => prevPage+1);
+    setPage(prevPage => prevPage + 1);
 
     //this.setState({ loading: true });
   };
@@ -50,45 +48,45 @@ export const App = () => {
   };
 
   //Метод для открытия модалки
-  const openModal = (img,description) => {
+  const openModal = (img, description) => {
     setShowModal(!showModal);
     setCurrentImageUrl(img);
     setCurrentImageDescription(description);
   };
 
-    return (
-      <>
-        <GlobalStyle />
-        <Container>
-          <Searchbar onSubmit={handleSearch} />
-          {images.length > 0 && (
-            <ImageGallery
-              imagesForGallery={images}
-              buttonHandler={loadMoreHandler}
-              openModal={openModal}
-            />
-          )}
-          {loading && (
-            <Spinner size={125} thickness={100} speed={100} color="#3f51b5" />
-          )}
-          {showModal && (
-            <Modal
-              onClose={toggleModal}
-              currentImageUrl={currentImageUrl}
-              currentImageDescription={currentImageDescription}
-            />
-          )}
-        </Container>
-        <ToastContainer autoClose={2000} />
-      </>
-    );
-}
-
-ImageGallery.propTypes={
-  imagesForGallery:PropTypes.array
+  return (
+    <>
+      <GlobalStyle />
+      <Container>  
+        <Searchbar onSubmit={handleSearch} />
+        {images.length > 0 && (
+          <ImageGallery
+            imagesForGallery={images}
+            buttonHandler={loadMoreHandler}
+            openModal={openModal}
+          />
+        )}
+        {loading && (
+          <Spinner size={125} thickness={100} speed={100} color="#3f51b5" />
+        )}
+        {showModal && (
+          <Modal
+            onClose={toggleModal}
+            currentImageUrl={currentImageUrl}
+            currentImageDescription={currentImageDescription}
+          />
+        )}
+      </Container>
+      <ToastContainer autoClose={2000} />
+    </>
+  );
 };
 
-Modal.propTypes={
-  currentImageUrl:PropTypes.string,
-  currentImageDescription:PropTypes.string
+ImageGallery.propTypes = {
+  imagesForGallery: PropTypes.array,
+};
+
+Modal.propTypes = {
+  currentImageUrl: PropTypes.string,
+  currentImageDescription: PropTypes.string,
 };

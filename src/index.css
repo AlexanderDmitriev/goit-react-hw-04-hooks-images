@@ -1,4 +1,7 @@
 @import-normalize; /* bring in normalize.css styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -9,6 +12,7 @@ html {
   box-sizing: border-box;
   width: 100vw;
   overflow-x: hidden;
+  
 }
 
 *,
