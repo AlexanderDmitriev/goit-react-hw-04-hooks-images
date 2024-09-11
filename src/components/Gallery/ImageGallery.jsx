@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import { Button } from '../Button';
+import { Button } from '../Button/Button';
 import { ImageGalleryItem } from './ImageGalleryItem';
 
 const ImageGallery = ({ imagesForGallery, buttonHandler, openModal }) => {

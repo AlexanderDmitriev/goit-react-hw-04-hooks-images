@@ -1,6 +1,11 @@
 import { GalleryItem, GalleryImage } from './ImageGalleryItem.styled';
+import { IImage } from '../../interfaces';
 
-export const ImageGalleryItem = ({ img, imgBig, openModal }) => {
+export const ImageGalleryItem: React.FC<IImage> = ({
+  img,
+  imgBig,
+  openModal,
+}) => {
   return (
     <GalleryItem>
       <GalleryImage
@@ -8,6 +13,7 @@ export const ImageGalleryItem = ({ img, imgBig, openModal }) => {
         alt="oops"
         data-large={imgBig}
         onClick={openModal}
+        className="hover:cursor-zoom-in hover:scale-105"
       />
     </GalleryItem>
   );

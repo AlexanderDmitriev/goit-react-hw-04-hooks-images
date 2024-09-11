@@ -24,7 +24,10 @@ const Searchbar: React.FC<IOnChange> = ({ onSubmit }) => {
     <HeaderBar className="bg-sky-600 px-6 py-3 flex justify-center ">
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <SearchForm className="bg-white overflow-hidden flex">
-          <SearchFormButton type="submit" className="inline-block ">
+          <SearchFormButton
+            type="submit"
+            className="inline-block hover:opacity-60 focus:opacity-60"
+          >
             <SearchFormButtonLabel className="p-0 overflow-hidden">
               Search
             </SearchFormButtonLabel>
