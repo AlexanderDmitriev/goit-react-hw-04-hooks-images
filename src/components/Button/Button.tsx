@@ -1,23 +1,26 @@
-import styled from '@emotion/styled';
+//import styled from '@emotion/styled';
+import { IOnClick } from "../../interfaces/IOnClick";
 
 //Рендер кастомной кнопки для дозагрузки картинок
-export const Button = ({ onClick }) => {
+export const Button = ({ onClick }:IOnClick) => {
   return (
-    <CustomButton
+    <button
       type="button"
-      className="py-2 px-4 my-0 mx-auto  inline-block bg-indigo-500 text-xl text-white rounded-md hover:bg-indigo-600 focus:bg-indigo-600"
+      className="py-2 px-4 my-0 mx-auto  inline-block bg-indigo-500 text-xl
+       text-white rounded-md hover:bg-indigo-600 focus:bg-indigo-600 
+       transition-transform text-center border-none cursor-pointer font-medium w-40 shadow-md"
       onClick={onClick}
     >
       Load more
-    </CustomButton>
+    </button>
   );
 };
 
-const CustomButton = styled.button`
-  /* //padding: ${props => props.theme.spacing(2)} ${props =>
+/*const CustomButton = styled.button`
+   padding: ${props => props.theme.spacing(2)} ${props =>
     props.theme.spacing(4)};
   border-radius: ${props => props.theme.spacing(1)};
-  background-color: ${props => props.theme.colors.blue}; */
+  background-color: ${props => props.theme.colors.blue}; 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
   //display: inline-block;
@@ -37,5 +40,5 @@ const CustomButton = styled.button`
   /* :hover,
   :focus {
     background-color: ${props => props.theme.colors.focusColor};
-  } */
-`;
+  } 
+`;*/

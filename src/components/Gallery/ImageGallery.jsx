@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+//import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { Button } from '../Button/Button';
 import { ImageGalleryItem } from './ImageGalleryItem';
@@ -7,7 +7,7 @@ const ImageGallery = ({ imagesForGallery, buttonHandler, openModal }) => {
 
   return (
     <>
-      <ImageGalleryList>
+      <ul className='grid gap-4 grid-cols-[repeat(auto-fill,minmax(320px,1fr))] max-w-[calc(100vw-48px)] p-0 list-none mx-auto my-0'>
         {imagesForGallery.map(image => (
           <ImageGalleryItem
             key={image.id}
@@ -16,7 +16,7 @@ const ImageGallery = ({ imagesForGallery, buttonHandler, openModal }) => {
             openModal={()=>{openModal(image.largeImageURL,image.tags)}}
           />
         ))}
-      </ImageGalleryList>
+      </ul>
       <Button onClick={buttonHandler} />
     </>
   );
@@ -27,7 +27,7 @@ ImageGalleryItem.propTypes={
   imgBig:PropTypes.string,
 };
 
-const ImageGalleryList = styled.ul`
+/* const ImageGalleryList = styled.ul`
   display: grid;
   max-width: calc(100vw - 48px);
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -35,6 +35,6 @@ const ImageGalleryList = styled.ul`
   margin: 0 auto;
   padding: 0;
   list-style: none;
-`;
+`; */
 
 export default ImageGallery;

@@ -1,4 +1,3 @@
-import { GalleryItem, GalleryImage } from './ImageGalleryItem.styled';
 import { IImage } from '../../interfaces';
 
 export const ImageGalleryItem: React.FC<IImage> = ({
@@ -7,14 +6,18 @@ export const ImageGalleryItem: React.FC<IImage> = ({
   openModal,
 }) => {
   return (
-    <GalleryItem>
-      <GalleryImage
+    <li className="shadow-md">
+      {' '}
+      {/* GalleryItem */}
+      <img /* GalleryImage */
         src={img}
         alt="oops"
         data-large={imgBig}
         onClick={openModal}
-        className="hover:cursor-zoom-in hover:scale-105"
+        className="hover:cursor-zoom-in hover:scale-105 
+                  rounded w-full h-64 object-cover 
+                  transition-transform"
       />
-    </GalleryItem>
+    </li>
   );
 };
