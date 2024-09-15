@@ -601,6 +601,10 @@ video {
   height: 100vh;
 }
 
+.max-h-\[calc\(100vh-24px\)\]{
+  max-height: calc(100vh - 24px);
+}
+
 .w-40{
   width: 10rem;
 }
@@ -627,6 +631,10 @@ video {
 
 .list-none{
   list-style-type: none;
+}
+
+.grid-cols-\[1fr\]{
+  grid-template-columns: 1fr;
 }
 
 .grid-cols-\[repeat\(auto-fill\2c minmax\(320px\2c 1fr\)\)\]{
@@ -710,6 +718,10 @@ video {
 .py-3{
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+
+.pb-6{
+  padding-bottom: 1.5rem;
 }
 
 .text-center{
