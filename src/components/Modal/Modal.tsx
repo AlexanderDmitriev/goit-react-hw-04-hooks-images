@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 //import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
-import { ModalContent } from './Modal.styled';
 import { IModal } from '../../interfaces';
 
 //Делаем портал для рендера модалки
@@ -43,9 +42,9 @@ const Modal = ({
     >
       {' '}
       {/* ModalOverlay */}
-      <ModalContent>
+      <div className='max-w-[calc(100vw-48px)] max-h-[calc(100vh-24px)]'>  {/* ModalContent */}
         <img src={currentImageUrl} alt={currentImageDescription} />
-      </ModalContent>
+      </div>
     </div>,
     modalRoot
   );

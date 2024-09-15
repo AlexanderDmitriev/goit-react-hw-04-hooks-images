@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+//import styled from '@emotion/styled';
 
 /* export const ModalOverlay = styled.div`
   position: fixed;
@@ -13,7 +13,7 @@ import styled from '@emotion/styled';
   z-index: 1200;
 `; */
 
-export const ModalContent = styled.div`
+/* export const ModalContent = styled.div`
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 24px);
-`;
+`; */

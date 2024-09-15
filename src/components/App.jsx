@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import Searchbar from './SearchungBar';
 import ImageGallery from './Gallery';
 import * as API from '../servicies/api';
-import { Container } from './App.styled';
 import GlobalStyle from '../GlobalStyle';
-import { Spinner } from './App.styled';
 import Modal from './Modal';
 import { ToastContainer } from 'react-toastify';
+import { SpinnerRoundFilled } from 'spinners-react';
 
 export const App = () => {
   const [keyWord, setKeyWord] = useState('');
@@ -57,7 +56,7 @@ export const App = () => {
   return (
     <>
       <GlobalStyle />
-      <Container>  
+      <div className='grid gap-4 grid-cols-[1fr] pb-6 '>  
         <Searchbar onSubmit={handleSearch} />
         {images.length > 0 && (
           <ImageGallery
@@ -67,7 +66,7 @@ export const App = () => {
           />
         )}
         {loading && (
-          <Spinner size={125} thickness={100} speed={100} color="#3f51b5" />
+          <SpinnerRoundFilled className='mx-auto my-0' size={125} thickness={100} speed={100} color="#3f51b5" />
         )}
         {showModal && (
           <Modal
@@ -76,7 +75,7 @@ export const App = () => {
             currentImageDescription={currentImageDescription}
           />
         )}
-      </Container>
+      </div>
       <ToastContainer autoClose={2000} />
     </>
   );
